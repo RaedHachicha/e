@@ -1,16 +1,15 @@
-# e_cinemav1
+# E_CINEMA
 
-A new Flutter project.
+It is a smartphone application whose main goal is to give the customer the option to easily reserve his favorite movies.
+Following the user's selection of a film from the list supplied, a second list of every theater showing the film will be displayed based on the user's location.
 
-## Getting Started
+## Specification
+Basic requirements:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Create a profile.
+- Check out the various information (Available movies, upcoming movies, best rated movies..)
+- Authenticate.
+- Purchase online movie tickets.
+- Edit personal information.
+- Check out the list of nearby theaters.
+- Take part in polls.
