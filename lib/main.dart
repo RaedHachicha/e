@@ -1,4 +1,4 @@
-import 'package:e_cinemav1/authentification/view/register_view.dart';
+import 'package:e_cinemav1/authentification/view/authentification_view.dart';
 import 'package:e_cinemav1/consts/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthStateProvider()),
       ],
-      child: GetMaterialApp(theme: regularTheme, home: RegisterUI()),
+      child: GetMaterialApp(theme: regularTheme, home: AuthentificationUI()),
     );
   }
 }

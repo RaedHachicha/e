@@ -10,14 +10,14 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class RegisterUI extends StatefulWidget {
-  RegisterUI({Key? key}) : super(key: key);
+class AuthentificationUI extends StatefulWidget {
+  AuthentificationUI({Key? key}) : super(key: key);
 
   @override
-  State<RegisterUI> createState() => _RegisterUIState();
+  State<AuthentificationUI> createState() => _AuthentificationUIState();
 }
 
-class _RegisterUIState extends State<RegisterUI> {
+class _AuthentificationUIState extends State<AuthentificationUI> {
   late TextEditingController usernameController;
   late TextEditingController phoneController;
   late TextEditingController emailController;
