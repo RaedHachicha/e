@@ -1,3 +1,5 @@
+import 'package:e_cinemav1/consts/widgets/movie_presenter.dart';
+import 'package:e_cinemav1/home/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 
 class HomeUI extends StatefulWidget {
@@ -8,26 +10,44 @@ class HomeUI extends StatefulWidget {
 }
 
 class _HomeUIState extends State<HomeUI> {
+  late HomeController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = HomeController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
             child: CustomScrollView(
       slivers: [
-        //create a pinned appbar that shows a title
         SliverAppBar(
           pinned: true,
           title: Text("Sliver App Bar"),
         ),
-        //create a silver list that shows 20 different colors
-        SliverList(
+        SliverGrid(
           delegate: SliverChildBuilderDelegate(
-            (context, index) => Container(
-              height: 100,
-              color: Colors.primaries[index % Colors.primaries.length],
-            ),
-            childCount: 20,
+            (context, index) {
+              var movie = controller.getMovies()[index];
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 3.0),
+                child: MoviePresenter(
+                  movie: movie,
+                ),
+              );
+            },
+            childCount: controller.getMovies().length,
           ),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: MediaQuery.of(context).size.width /
+                  (MediaQuery.of(context).size.height / 1.2),
+              mainAxisSpacing: 10.0,
+              crossAxisSpacing: 2.0,
+              crossAxisCount: 2),
         ),
       ],
     )));
