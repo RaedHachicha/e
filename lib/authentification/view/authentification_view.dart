@@ -48,7 +48,7 @@ class _AuthentificationUIState extends State<AuthentificationUI> {
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
     return Scaffold(
-       resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       body: Consumer<AuthStateProvider>(builder: (context, provider, child) {
         return SafeArea(
           child: Column(
@@ -80,11 +80,13 @@ class _AuthentificationUIState extends State<AuthentificationUI> {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: SizedBox(
-                    width: double.infinity,
+                      width: double.infinity,
                       child: CustomElevatedButton(
-                    onPressed: () {},
-                    buttonText: provider.loginState == 0 ? "LOGIN" : "REGISTER",
-                  )),
+                        fontSize: 20,
+                        onPressed: () {},
+                        buttonText:
+                            provider.loginState == 0 ? "LOGIN" : "REGISTER",
+                      )),
                 ),
               )
             ],

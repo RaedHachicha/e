@@ -9,7 +9,6 @@ class MoviePresenter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mediaquery = MediaQuery.of(context);
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -71,7 +70,7 @@ class TitlePresenter extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaquery = MediaQuery.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      padding: const EdgeInsets.symmetric(vertical: 5.0,horizontal: 5.0),
       child: Align(
         alignment: Alignment.bottomLeft,
         child: Container(

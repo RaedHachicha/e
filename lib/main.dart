@@ -1,5 +1,6 @@
 import 'package:e_cinemav1/authentification/view/authentification_view.dart';
 import 'package:e_cinemav1/consts/theme.dart';
+import 'package:e_cinemav1/home/controller/search_provider.dart';
 import 'package:e_cinemav1/home/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => SearchStateProvider()),
         ChangeNotifierProvider(create: (_) => AuthStateProvider()),
       ],
       child: GetMaterialApp(theme: regularTheme, home: HomeUI()),
