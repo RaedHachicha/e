@@ -38,7 +38,7 @@ class _HomeUIState extends State<HomeUI> {
               elevation: 5.0,
               pinned: true,
               centerTitle: true,
-              leading: Text('LOGO\nHERE\nT\nY'),
+              leading: Text('LOGO\nHERE\nTY'),
               actions: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 7.0),
