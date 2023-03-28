@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthStateProvider()),
       ],
-      child: GetMaterialApp(theme: regularTheme, home: RegisterUI()),
+      child: GetMaterialApp(theme: regularTheme, home: const RegisterUI()),
     );
   }
 }

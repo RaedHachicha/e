@@ -3,21 +3,20 @@ import 'package:e_cinemav1/consts/colors.dart';
 import 'package:e_cinemav1/consts/widgets/elevatedbtn_widget.dart';
 import 'package:e_cinemav1/consts/widgets/form_widgets/login_form_widget.dart';
 import 'package:e_cinemav1/consts/widgets/form_widgets/register_form_widget.dart';
-import 'package:e_cinemav1/consts/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:form_validator/form_validator.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class RegisterUI extends StatefulWidget {
-  RegisterUI({Key? key}) : super(key: key);
+  const RegisterUI({Key? key}) : super(key: key);
 
   @override
   State<RegisterUI> createState() => _RegisterUIState();
 }
 
 class _RegisterUIState extends State<RegisterUI> {
+  final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
+
   late TextEditingController usernameController;
   late TextEditingController phoneController;
   late TextEditingController emailController;
@@ -44,11 +43,12 @@ class _RegisterUIState extends State<RegisterUI> {
     super.dispose();
   }
 
+  SignUp() {}
+
   @override
   Widget build(BuildContext context) {
-    var formKey = GlobalKey<FormState>();
     return Scaffold(
-       resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       body: Consumer<AuthStateProvider>(builder: (context, provider, child) {
         return SafeArea(
           child: Column(
@@ -61,7 +61,6 @@ class _RegisterUIState extends State<RegisterUI> {
                   child: Container(
                       child: provider.loginState == 0
                           ? LoginFormWidget(
-                              formKey: formKey,
                               emailController: emailController,
                               passwordController: passwordController)
                           : RegisterFormWidget(
@@ -75,18 +74,6 @@ class _RegisterUIState extends State<RegisterUI> {
                             )),
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                      child: CustomElevatedButton(
-                    onPressed: () {},
-                    buttonText: provider.loginState == 0 ? "LOGIN" : "REGISTER",
-                  )),
-                ),
-              )
             ],
           ),
         );
@@ -97,7 +84,7 @@ class _RegisterUIState extends State<RegisterUI> {
 
 class TabBarWidget extends StatefulWidget {
   final AuthStateProvider provider;
-  TabBarWidget({Key? key, required this.provider}) : super(key: key);
+  const TabBarWidget({Key? key, required this.provider}) : super(key: key);
 
   @override
   State<TabBarWidget> createState() => _TabBarWidgetState();

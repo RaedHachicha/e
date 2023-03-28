@@ -2,6 +2,8 @@ import 'package:e_cinemav1/consts/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 
+import '../elevatedbtn_widget.dart';
+
 class RegisterFormWidget extends StatefulWidget {
   final TextEditingController usernameController;
   final TextEditingController phoneController;
@@ -9,7 +11,7 @@ class RegisterFormWidget extends StatefulWidget {
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
   final GlobalKey<FormState> formKey;
-  RegisterFormWidget(
+  const RegisterFormWidget(
       {Key? key,
       required this.formKey,
       required this.usernameController,
@@ -41,26 +43,36 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           CustomTextField(
+              isPassword: false,
               hintText: "Username",
               validator: usernameValidator,
               fieldController: widget.usernameController),
           CustomTextField(
+              isPassword: false,
               hintText: "Phone Number (+33)",
               validator: phoneValidator,
               fieldController: widget.phoneController),
           CustomTextField(
+              isPassword: false,
               hintText: "Email",
               validator: emailValidator,
               fieldController: widget.emailController),
           CustomTextField(
+              isPassword: true,
               hintText: "Password",
               validator: passwordValidator,
               fieldController: widget.passwordController),
           CustomTextField(
+              isPassword: true,
               hintText: "Confirm Password",
               validator: confirmPasswordValidator,
               fieldController: widget.confirmPasswordController),
-            
+          SizedBox(
+              width: double.infinity,
+              child: CustomElevatedButton(
+                onPressed: () {},
+                buttonText: "REGISTER",
+              )),
         ],
       ),
     );
