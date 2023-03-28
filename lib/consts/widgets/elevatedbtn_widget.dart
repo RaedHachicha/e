@@ -7,7 +7,7 @@ class CustomElevatedButton extends StatefulWidget {
   final String buttonText;
   final Function()? onPressed;
 
-  CustomElevatedButton(
+  const CustomElevatedButton(
       {Key? key, required this.buttonText, required this.onPressed})
       : super(key: key);
 
@@ -24,8 +24,10 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
       child: Text(
         widget.buttonText,
         style: GoogleFonts.exo2(
-          letterSpacing: 1.5,
-            color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
+            letterSpacing: 1.5,
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w600),
       ),
     );
   }
