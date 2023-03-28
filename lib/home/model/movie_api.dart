@@ -7,7 +7,7 @@ class MovieAPI extends APIService {
   String TABLE_NAME = "movie";
 
   void read_populair_movies(int page) {
-      var request2 = http.Request(
+      var request = http.Request(
       'GET',
       Uri.parse(base_url +
           TABLE_NAME +

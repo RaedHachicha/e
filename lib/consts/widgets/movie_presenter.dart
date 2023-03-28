@@ -3,39 +3,54 @@ import 'package:e_cinemav1/home/model/movie_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../home/view/movie_detail_view.dart';
+
 class MoviePresenter extends StatelessWidget {
   final Movie movie;
   const MoviePresenter({Key? key, required this.movie}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.white.withOpacity(0.07),
-            spreadRadius: 1,
-            blurRadius: 10,
-          ),
-        ],
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Stack(
-        children: [
-          //IMG presenter
-          IMGPresenter(
-            img: movie.imglink,
-          ),
-          //rate PRESENTER
-          RatePresenter(
-            rate: movie.rate,
-          ),
-          //title presenter
-          TitlePresenter(
-            genre: movie.genres[0],
-            title: movie.title,
-          )
-        ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (ctx) => MovieDetailUI(
+                      movie: movie,
+                    )));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.white.withOpacity(0.07),
+              spreadRadius: 1,
+              blurRadius: 10,
+            ),
+          ],
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Stack(
+          children: [
+            //IMG presenter
+            Hero(
+              tag: movie.imglink,
+              child: IMGPresenter(
+                img: movie.imglink,
+              ),
+            ),
+            //rate PRESENTER
+            RatePresenter(
+              rate: movie.rate,
+            ),
+            //title presenter
+            TitlePresenter(
+              genre: movie.genres[0],
+              title: movie.title,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -70,7 +85,7 @@ class TitlePresenter extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaquery = MediaQuery.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0,horizontal: 5.0),
+      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
       child: Align(
         alignment: Alignment.bottomLeft,
         child: Container(

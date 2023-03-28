@@ -28,6 +28,7 @@ class _HomeUIState extends State<HomeUI> {
     var mediaquery = MediaQuery.of(context);
     return Consumer<SearchStateProvider>(builder: (context, provider, child) {
       return Scaffold(
+        
           body: SafeArea(
               child: CustomScrollView(
         slivers: [
