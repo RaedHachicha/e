@@ -57,8 +57,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         DatabaseService.service.saveData(user).then((userData) {
           alertDialog("Successfully Saved");
 
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => RegisterUI()));
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => RegisterUI()),
+              (Route<dynamic> route) => false);
         }).catchError((error) {
           print(error);
           alertDialog("Error: Data Save Fail");

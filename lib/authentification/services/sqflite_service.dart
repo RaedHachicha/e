@@ -43,7 +43,7 @@ class DatabaseService {
     return list;
   }
 
-  Future<User> getLoginUser(String userEmail, String userPassword) async {
+  Future<User?> getLoginUser(String userEmail, String userPassword) async {
     Database db = await service.database;
     var res = await db.rawQuery("SELECT * FROM $Table_user WHERE "
         "$email = '$userEmail' AND "
@@ -52,7 +52,7 @@ class DatabaseService {
     if (res.isNotEmpty) {
       return User.fromMap(res.first);
     }
-    return User.empty();
+    return null;
   }
 
   Future<int> saveData(User user) async {

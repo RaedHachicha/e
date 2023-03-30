@@ -72,13 +72,4 @@ class User {
         email.hashCode ^
         password.hashCode;
   }
-
-  static Future<User> empty() {
-    return Future.value(User(
-      username: 'don\'t exist',
-      phonenumber: 'don\'t exist',
-      email: ' dont\'t exist',
-      password: 'dont\'t exist',
-    ));
-  }
 }

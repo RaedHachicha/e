@@ -38,9 +38,14 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
       await DatabaseService.service
           .getLoginUser(email, password)
           .then((userData) {
-        alertDialog("Successfully Saved");
-
-        Navigator.push(context, MaterialPageRoute(builder: (_) => HomeForm()));
+        if (userData != null) {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => HomeForm()),
+              (Route<dynamic> route) => false);
+        } else {
+          alertDialog(" User Not Found");
+        }
       }).catchError((error) {
         print(error);
         alertDialog("Error: Login Fail");
