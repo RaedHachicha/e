@@ -55,6 +55,17 @@ class DatabaseService {
     return null;
   }
 
+  Future<User?> getUsername(String userName) async {
+    Database db = await service.database;
+    var res = await db.rawQuery("SELECT * FROM $Table_user WHERE "
+        "$username = '$userName'");
+
+    if (res.isNotEmpty) {
+      return User.fromMap(res.first);
+    }
+    return null;
+  }
+
   Future<int> saveData(User user) async {
     Database db = await service.database;
     var res = await db.insert(Table_user, user.toMap());

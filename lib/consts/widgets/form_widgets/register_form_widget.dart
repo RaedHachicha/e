@@ -53,21 +53,26 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
             phonenumber: widget.phoneController.text,
             email: widget.emailController.text,
             password: widget.passwordController.text);
+        DatabaseService.service
+            .getUsername(widget.usernameController.text)
+            .then((userData) {
+          if (userData != null) {
+            alertDialog("Username already exist please try another one");
+          } else {
+            DatabaseService.service.saveData(user).then((userData) {
+              alertDialog("Successfully Saved");
 
-        DatabaseService.service.saveData(user).then((userData) {
-          alertDialog("Successfully Saved");
-
-          Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (_) => RegisterUI()),
-              (Route<dynamic> route) => false);
-        }).catchError((error) {
-          print(error);
-          alertDialog("Error: Data Save Fail");
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (_) => RegisterUI()),
+                  (Route<dynamic> route) => false);
+            }).catchError((error) {
+              print(error);
+              alertDialog("Error: Data Save Fail");
+            });
+          }
         });
       }
-    } else {
-      alertDialog("Not Valid");
     }
   }
 
