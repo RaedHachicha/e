@@ -7,8 +7,7 @@ import 'package:path/path.dart';
 class DatabaseService {
   static Database? _database;
   static const String dbname = 'users_db';
-  static const String tablename = 'users_table';
-  static const String id = 'id';
+
   static const String username = 'username';
   static const String phonenumber = 'phonenumber';
   static const String email = 'email';
@@ -29,37 +28,49 @@ class DatabaseService {
 
   Future _createdb(Database db, int verison) async {
     await db.execute("CREATE TABLE $Table_user("
-        " $id TEXT, "
-        " $username TEXT, "
+        " $username TEXT PRIMARY KEY, "
+        " $phonenumber TEXT,"
         " $email TEXT,"
         " $password TEXT, "
-        " PRIMARY KEY ($id)"
         ")");
   }
 
   Future<List<User>> getAllUsers() async {
     Database db = await service.database;
-    var users = await db.query(tablename);
+    var users = await db.query(Table_user);
     List<User> list =
         users.isNotEmpty ? users.map((e) => User.fromMap(e)).toList() : [];
     return list;
   }
 
-  Future<int> insertUser(User user) async {
+  Future<User> getLoginUser(String userEmail, String userPassword) async {
     Database db = await service.database;
-    return await db.insert(tablename, user.toMap());
+    var res = await db.rawQuery("SELECT * FROM $Table_user WHERE "
+        "$email = '$userEmail' AND "
+        "$password = '$userPassword'");
+
+    if (res.isNotEmpty) {
+      return User.fromMap(res.first);
+    }
+    return User.empty();
+  }
+
+  Future<int> saveData(User user) async {
+    Database db = await service.database;
+    var res = await db.insert(Table_user, user.toMap());
+    return res;
   }
 
   Future<int> deleteUser(String username) async {
     Database db = await service.database;
 
     return await db
-        .delete(tablename, where: 'username = ?', whereArgs: [username]);
+        .delete(Table_user, where: 'username = ?', whereArgs: [username]);
   }
 
   Future<int> updateUser(User user) async {
     Database db = await service.database;
-    return await db.update(tablename, user.toMap(),
+    return await db.update(Table_user, user.toMap(),
         where: 'username = ?', whereArgs: [user.username]);
   }
 }

@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+
 class User {
-  final String username;
+  String username;
   final String phonenumber;
   final String email;
   final String password;
@@ -11,8 +12,6 @@ class User {
     required this.email,
     required this.password,
   });
-
-  
 
   User copyWith({
     String? username,
@@ -48,29 +47,38 @@ class User {
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromJson(String source) => User.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory User.fromJson(String source) =>
+      User.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'User(username: $username, phonenumber: $phonenumber, email: $email, password: $password)';
+    return 'User(username: $username, phone: $phonenumber, email: $email, password: $password)';
   }
 
   @override
   bool operator ==(covariant User other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.username == username &&
-      other.phonenumber == phonenumber &&
-      other.email == email &&
-      other.password == password;
+
+    return other.username == username &&
+        other.phonenumber == phonenumber &&
+        other.email == email &&
+        other.password == password;
   }
 
   @override
   int get hashCode {
     return username.hashCode ^
-      phonenumber.hashCode ^
-      email.hashCode ^
-      password.hashCode;
+        phonenumber.hashCode ^
+        email.hashCode ^
+        password.hashCode;
+  }
+
+  static Future<User> empty() {
+    return Future.value(User(
+      username: 'don\'t exist',
+      phonenumber: 'don\'t exist',
+      email: ' dont\'t exist',
+      password: 'dont\'t exist',
+    ));
   }
 }

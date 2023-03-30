@@ -2,14 +2,18 @@ import 'package:e_cinemav1/consts/widgets/animated_logo.dart';
 import 'package:e_cinemav1/consts/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:e_cinemav1/authentification/model/user_model.dart';
+import 'package:e_cinemav1/authentification/services/sqflite_service.dart';
 
+import '../comAlert.dart';
 import '../elevatedbtn_widget.dart';
+import 'Home.dart';
 
 class LoginFormWidget extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
 
-  LoginFormWidget(
+  const LoginFormWidget(
       {Key? key,
       required this.emailController,
       required this.passwordController})
@@ -20,14 +24,27 @@ class LoginFormWidget extends StatefulWidget {
 }
 
 class _LoginFormWidgetState extends State<LoginFormWidget> {
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
-  SignIn() {
-    final form = formKey.currentState;
-    if (form!.validate()) {
-      print("valid");
+  login() async {
+    String email = widget.emailController.text;
+    String password = widget.passwordController.text;
+
+    if (email.isEmpty) {
+      alertDialog("Please Enter User Email");
+    } else if (password.isEmpty) {
+      alertDialog("Please Enter Password");
     } else {
-      print("not valid");
+      await DatabaseService.service
+          .getLoginUser(email, password)
+          .then((userData) {
+        alertDialog("Successfully Saved");
+
+        Navigator.push(context, MaterialPageRoute(builder: (_) => HomeForm()));
+      }).catchError((error) {
+        print(error);
+        alertDialog("Error: Login Fail");
+      });
     }
   }
 
@@ -37,8 +54,9 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
     var passwordValidator =
         ValidationBuilder().required().minLength(8).maxLength(20).build();
     return Scaffold(
-        body: Form(
-      key: formKey,
+        body: SingleChildScrollView(
+            child: Form(
+      key: _formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -56,9 +74,9 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
           SizedBox(
               width: double.infinity,
               child:
-                  CustomElevatedButton(onPressed: SignIn, buttonText: "LOGIN")),
+                  CustomElevatedButton(onPressed: login, buttonText: "LOGIN")),
         ],
       ),
-    ));
+    )));
   }
 }

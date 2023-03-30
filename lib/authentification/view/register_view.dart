@@ -65,7 +65,6 @@ class _RegisterUIState extends State<RegisterUI> {
                               passwordController: passwordController)
                           : RegisterFormWidget(
                               emailController: emailController,
-                              formKey: formKey,
                               passwordController: passwordController,
                               phoneController: phoneController,
                               usernameController: usernameController,
