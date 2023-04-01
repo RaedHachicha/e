@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:e_cinemav1/home/model/detailedInformation.dart';
+import 'package:e_cinemav1/session/model/session_model.dart';
 
 class Movie {
   final String title;
@@ -11,13 +12,17 @@ class Movie {
   final double rate;
   final List<String> genres;
   final DetailedInformation detailedInformation;
+  final List<Session> sessions;
   Movie({
     required this.title,
     required this.imglink,
     required this.rate,
     required this.genres,
     required this.detailedInformation,
+    required this.sessions,
   });
+
+  
 
   Movie copyWith({
     String? title,
@@ -25,6 +30,7 @@ class Movie {
     double? rate,
     List<String>? genres,
     DetailedInformation? detailedInformation,
+    List<Session>? sessions,
   }) {
     return Movie(
       title: title ?? this.title,
@@ -32,6 +38,7 @@ class Movie {
       rate: rate ?? this.rate,
       genres: genres ?? this.genres,
       detailedInformation: detailedInformation ?? this.detailedInformation,
+      sessions: sessions ?? this.sessions,
     );
   }
 
@@ -42,6 +49,7 @@ class Movie {
       'rate': rate,
       'genres': genres,
       'detailedInformation': detailedInformation.toMap(),
+      'sessions': sessions.map((x) => x.toMap()).toList(),
     };
   }
 
@@ -52,6 +60,7 @@ class Movie {
       rate: map['rate'] as double,
       genres: List<String>.from((map['genres'] as List<String>)),
       detailedInformation: DetailedInformation.fromMap(map['detailedInformation'] as Map<String,dynamic>),
+      sessions: List<Session>.from((map['sessions'] as List<int>).map<Session>((x) => Session.fromMap(x as Map<String,dynamic>),),),
     );
   }
 
@@ -61,7 +70,7 @@ class Movie {
 
   @override
   String toString() {
-    return 'Movie(title: $title, imglink: $imglink, rate: $rate, genres: $genres, detailedInformation: $detailedInformation)';
+    return 'Movie(title: $title, imglink: $imglink, rate: $rate, genres: $genres, detailedInformation: $detailedInformation, sessions: $sessions)';
   }
 
   @override
@@ -73,7 +82,8 @@ class Movie {
       other.imglink == imglink &&
       other.rate == rate &&
       listEquals(other.genres, genres) &&
-      other.detailedInformation == detailedInformation;
+      other.detailedInformation == detailedInformation &&
+      listEquals(other.sessions, sessions);
   }
 
   @override
@@ -82,6 +92,7 @@ class Movie {
       imglink.hashCode ^
       rate.hashCode ^
       genres.hashCode ^
-      detailedInformation.hashCode;
+      detailedInformation.hashCode ^
+      sessions.hashCode;
   }
-}
+  }

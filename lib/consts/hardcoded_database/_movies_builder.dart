@@ -1,4 +1,5 @@
 import 'package:e_cinemav1/consts/hardcoded_database/_detailedInformation_builder.dart';
+import 'package:e_cinemav1/consts/hardcoded_database/_session_builder.dart';
 import 'package:e_cinemav1/home/model/detailedInformation.dart';
 
 import '../../home/model/movie_model.dart';
@@ -6,7 +7,6 @@ import '../../home/model/movie_model.dart';
 class MovieBuilders {
   DetailedInformationBuilder dIBuilder = DetailedInformationBuilder();
   MovieBuilders();
-
   List<Movie> getMovies() {
     List<Movie> movies = [];
     movies.add(thebatman);
@@ -20,6 +20,7 @@ class MovieBuilders {
   }
 
   Movie psycho = Movie(
+    sessions: ISessionBuilder.psychoSessions(),
     detailedInformation: DetailedInformationBuilder.psychoDI,
     title: "Psycho",
     imglink:
@@ -29,6 +30,7 @@ class MovieBuilders {
   );
 
   Movie thebatman = Movie(
+     sessions: ISessionBuilder.batmanSessions(),
       detailedInformation: DetailedInformationBuilder.thebatmanDI,
       title: "The Batman",
       imglink:
