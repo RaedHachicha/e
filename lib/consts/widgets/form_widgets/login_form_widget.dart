@@ -2,15 +2,19 @@ import 'package:e_cinemav1/consts/widgets/animated_logo.dart';
 import 'package:e_cinemav1/consts/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:e_cinemav1/authentification/model/user_model.dart';
+import 'package:e_cinemav1/authentification/services/sqflite_service.dart';
+
+import '../comAlert.dart';
+import '../elevatedbtn_widget.dart';
+import 'Home.dart';
 
 class LoginFormWidget extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final GlobalKey<FormState> formKey;
 
-  LoginFormWidget(
+  const LoginFormWidget(
       {Key? key,
-      required this.formKey,
       required this.emailController,
       required this.passwordController})
       : super(key: key);
@@ -20,28 +24,64 @@ class LoginFormWidget extends StatefulWidget {
 }
 
 class _LoginFormWidgetState extends State<LoginFormWidget> {
+  final _formKey = GlobalKey<FormState>();
+
+  login() async {
+    String email = widget.emailController.text;
+    String password = widget.passwordController.text;
+
+    if (email.isEmpty) {
+      alertDialog("Please Enter User Email");
+    } else if (password.isEmpty) {
+      alertDialog("Please Enter Password");
+    } else {
+      await DatabaseService.service
+          .getLoginUser(email, password)
+          .then((userData) {
+        if (userData != null) {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => HomeForm()),
+              (Route<dynamic> route) => false);
+        } else {
+          alertDialog(" User Not Found");
+        }
+      }).catchError((error) {
+        print(error);
+        alertDialog("Error: Login Fail");
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var emailValidator = ValidationBuilder().required().email().build();
     var passwordValidator =
         ValidationBuilder().required().minLength(8).maxLength(20).build();
-    return Form(
-      key: widget.formKey,
+    return Scaffold(
+        body: SingleChildScrollView(
+            child: Form(
+      key: _formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          AnimatedLogo(),
+          const AnimatedLogo(),
           CustomTextField(
+              isPassword: false,
               hintText: "Email",
               validator: emailValidator,
               fieldController: widget.emailController),
           CustomTextField(
+              isPassword: true,
               hintText: "Password",
               validator: passwordValidator,
               fieldController: widget.passwordController),
-            SizedBox(height: 20,)
+          SizedBox(
+              width: double.infinity,
+              child:
+                  CustomElevatedButton(onPressed: login, buttonText: "LOGIN")),
         ],
       ),
-    );
+    )));
   }
 }

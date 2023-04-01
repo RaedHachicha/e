@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class AnimatedLogo extends StatefulWidget {
-  AnimatedLogo({Key? key}) : super(key: key);
+  const AnimatedLogo({Key? key}) : super(key: key);
 
   @override
   State<AnimatedLogo> createState() => _AnimatedLogoState();
