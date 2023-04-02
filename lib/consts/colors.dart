@@ -5,3 +5,4 @@ const primaryOrangeColor = Color(0xFFFF8036);
 const primaryBlueColor = Color(0xFF1F293D);
 const offColor = Color(0xFF637394);
 const blackOffColor= Color(0xFF1F293D);
+const blueDarkOffColor = Color(0xFF253554);

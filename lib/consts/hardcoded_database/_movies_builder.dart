@@ -39,6 +39,7 @@ class MovieBuilders {
       genres: ["Action", "Crime", "Drama"]);
 
   Movie uncharted = Movie(
+    sessions: ISessionBuilder.unchartedSessions(),
       detailedInformation: DetailedInformationBuilder.unchartedDI,
       title: "Uncharted",
       imglink:
@@ -47,6 +48,7 @@ class MovieBuilders {
       genres: ["Action", "Adventure", "Thriller"]);
 
   Movie theGodFather = Movie(
+    sessions: ISessionBuilder.thegodfathersSessions(),
       detailedInformation: DetailedInformationBuilder.theGDfatherDI,
       title: "The God Father",
       imglink:
@@ -55,6 +57,7 @@ class MovieBuilders {
       genres: ["Crime", "Drama"]);
 
   Movie inception = Movie(
+  sessions: ISessionBuilder.inceptionsSessions(),
       detailedInformation: DetailedInformationBuilder.inceptionDI,
       title: "Inception",
       imglink:
@@ -62,6 +65,7 @@ class MovieBuilders {
       rate: 8.8,
       genres: ["Action", "Adventure", "Sci-Fi"]);
   Movie theMatrix = Movie(
+    sessions: ISessionBuilder.theMatrixSessions(),
       detailedInformation: DetailedInformationBuilder.theMatrixDI,
       title: "The Matrix",
       imglink:
@@ -70,6 +74,7 @@ class MovieBuilders {
       genres: ["Action", "Sci-Fi"]);
 
   Movie spiritedAway = Movie(
+    sessions: ISessionBuilder.spiritedAwaySessions(),
       detailedInformation: DetailedInformationBuilder.spiritedAwayDI,
       title: "Spirited Away",
       imglink:
