@@ -3,21 +3,20 @@ import 'package:e_cinemav1/consts/colors.dart';
 import 'package:e_cinemav1/consts/widgets/elevatedbtn_widget.dart';
 import 'package:e_cinemav1/consts/widgets/form_widgets/login_form_widget.dart';
 import 'package:e_cinemav1/consts/widgets/form_widgets/register_form_widget.dart';
-import 'package:e_cinemav1/consts/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:form_validator/form_validator.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class AuthentificationUI extends StatefulWidget {
-  AuthentificationUI({Key? key}) : super(key: key);
+class RegisterUI extends StatefulWidget {
+  const RegisterUI({Key? key}) : super(key: key);
 
   @override
-  State<AuthentificationUI> createState() => _AuthentificationUIState();
+  State<RegisterUI> createState() => _RegisterUIState();
 }
 
-class _AuthentificationUIState extends State<AuthentificationUI> {
+class _RegisterUIState extends State<RegisterUI> {
+  final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
+
   late TextEditingController usernameController;
   late TextEditingController phoneController;
   late TextEditingController emailController;
@@ -44,9 +43,10 @@ class _AuthentificationUIState extends State<AuthentificationUI> {
     super.dispose();
   }
 
+  SignUp() {}
+
   @override
   Widget build(BuildContext context) {
-    var formKey = GlobalKey<FormState>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Consumer<AuthStateProvider>(builder: (context, provider, child) {
@@ -61,12 +61,10 @@ class _AuthentificationUIState extends State<AuthentificationUI> {
                   child: Container(
                       child: provider.loginState == 0
                           ? LoginFormWidget(
-                              formKey: formKey,
                               emailController: emailController,
                               passwordController: passwordController)
                           : RegisterFormWidget(
                               emailController: emailController,
-                              formKey: formKey,
                               passwordController: passwordController,
                               phoneController: phoneController,
                               usernameController: usernameController,
@@ -75,20 +73,6 @@ class _AuthentificationUIState extends State<AuthentificationUI> {
                             )),
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: SizedBox(
-                      width: double.infinity,
-                      child: CustomElevatedButton(
-                        fontSize: 20,
-                        onPressed: () {},
-                        buttonText:
-                            provider.loginState == 0 ? "LOGIN" : "REGISTER",
-                      )),
-                ),
-              )
             ],
           ),
         );
@@ -99,7 +83,7 @@ class _AuthentificationUIState extends State<AuthentificationUI> {
 
 class TabBarWidget extends StatefulWidget {
   final AuthStateProvider provider;
-  TabBarWidget({Key? key, required this.provider}) : super(key: key);
+  const TabBarWidget({Key? key, required this.provider}) : super(key: key);
 
   @override
   State<TabBarWidget> createState() => _TabBarWidgetState();
