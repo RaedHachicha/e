@@ -7,25 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-<<<<<<< HEAD:lib/authentification/view/authentification_view.dart
-class AuthentificationUI extends StatefulWidget {
-  AuthentificationUI({Key? key}) : super(key: key);
-=======
 class RegisterUI extends StatefulWidget {
   const RegisterUI({Key? key}) : super(key: key);
->>>>>>> 2bce6c3b09770a5bd81b7233bd07b1348f8de529:lib/authentification/view/register_view.dart
 
   @override
-  State<AuthentificationUI> createState() => _AuthentificationUIState();
+  State<RegisterUI> createState() => _RegisterUIState();
 }
 
-<<<<<<< HEAD:lib/authentification/view/authentification_view.dart
-class _AuthentificationUIState extends State<AuthentificationUI> {
-=======
 class _RegisterUIState extends State<RegisterUI> {
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
 
->>>>>>> 2bce6c3b09770a5bd81b7233bd07b1348f8de529:lib/authentification/view/register_view.dart
   late TextEditingController usernameController;
   late TextEditingController phoneController;
   late TextEditingController emailController;
@@ -82,23 +73,6 @@ class _RegisterUIState extends State<RegisterUI> {
                             )),
                 ),
               ),
-<<<<<<< HEAD:lib/authentification/view/authentification_view.dart
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: SizedBox(
-                      width: double.infinity,
-                      child: CustomElevatedButton(
-                        fontSize: 20,
-                        onPressed: () {},
-                        buttonText:
-                            provider.loginState == 0 ? "LOGIN" : "REGISTER",
-                      )),
-                ),
-              )
-=======
->>>>>>> 2bce6c3b09770a5bd81b7233bd07b1348f8de529:lib/authentification/view/register_view.dart
             ],
           ),
         );

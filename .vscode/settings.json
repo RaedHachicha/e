@@ -5,7 +5,11 @@
         "dbname",
         "ecinemalogo",
         "phonenumber",
+<<<<<<< HEAD
         "tablename",
         "thebatman"
+=======
+        "Table_user"
+>>>>>>> 2bce6c3b09770a5bd81b7233bd07b1348f8de529
     ]
 }

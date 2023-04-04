@@ -20,7 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: '>=2.18.4 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -40,10 +40,15 @@ dependencies:
   path_provider: ^2.0.12
   provider: ^6.0.5
   sqflite: ^2.2.4+1
+<<<<<<< HEAD
   unicons: ^2.1.0
   youtube_player_flutter: ^8.1.2
+=======
+  fluttertoast: ^8.2.1
+>>>>>>> 2bce6c3b09770a5bd81b7233bd07b1348f8de529
 
 dev_dependencies:
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
 
