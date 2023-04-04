@@ -46,6 +46,8 @@ dependencies:
   unicons: ^2.1.0
   youtube_player_flutter: ^8.1.2
   fluttertoast: ^8.2.1
+  permission_handler: ^8.3.0
+
   
 
 dev_dependencies:
