@@ -31,7 +31,7 @@ class DatabaseService {
         " $username TEXT PRIMARY KEY, "
         " $phonenumber TEXT,"
         " $email TEXT,"
-        " $password TEXT, "
+        " $password TEXT"
         ")");
   }
 
