@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SearchStateProvider()),
         ChangeNotifierProvider(create: (_) => AuthStateProvider()),
       ],
-      child: GetMaterialApp(theme: regularTheme, home: const RegisterUI()),
+      child: GetMaterialApp(theme: regularTheme, home: HomeUI()),
     );
   }
 }
