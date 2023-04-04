@@ -1,10 +1,10 @@
 import 'package:e_cinemav1/authentification/model/user_model.dart';
 import 'package:e_cinemav1/authentification/services/sqflite_service.dart';
-import 'package:e_cinemav1/authentification/view/register_view.dart';
 import 'package:e_cinemav1/consts/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 
+import '../../../authentification/view/authentification_view.dart';
 import '../comAlert.dart';
 import '../elevatedbtn_widget.dart';
 

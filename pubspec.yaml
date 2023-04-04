@@ -29,23 +29,25 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bottom_picker: ^2.0.1
   cupertino_icons: ^1.0.2
+  date_time_picker: ^2.1.0
   flutter:
     sdk: flutter
   form_validator: ^2.1.1
   get: ^4.6.5
   google_fonts: ^4.0.3
   http: ^0.13.5
+  intl: ^0.17.0
   lottie: ^2.2.0
   path_provider: ^2.0.12
   provider: ^6.0.5
   sqflite: ^2.2.4+1
-<<<<<<< HEAD
+
   unicons: ^2.1.0
   youtube_player_flutter: ^8.1.2
-=======
   fluttertoast: ^8.2.1
->>>>>>> 2bce6c3b09770a5bd81b7233bd07b1348f8de529
+
 
 dev_dependencies:
   flutter_lints: ^2.0.1
@@ -65,6 +67,7 @@ flutter:
   assets:
     - assets/images/
     - ecinemalogo.json
+    - empty_box.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
