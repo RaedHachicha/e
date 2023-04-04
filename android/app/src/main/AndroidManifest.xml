@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.e_cinemav1">
+   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
    <application
         android:label="e_cinemav1"
         android:name="${applicationName}"
